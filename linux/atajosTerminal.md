@@ -55,8 +55,4 @@
 - **> /dev/null**
 - **Ctrl+l**
 
-<<<<<<< HEAD
-xxxxxxxxxxxxxxxxxxxx
-=======
-aaaaaaaaaaaaaaa
->>>>>>> experimentos
+aaaaaaaaaaaaaaagit status
