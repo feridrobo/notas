@@ -18,6 +18,7 @@ sudo apt-get update
 
 # Instalación de Docker
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+sudo usermod -aG docker ghost
 
 # Instalación de Docker Compose
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
