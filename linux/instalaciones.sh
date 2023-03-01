@@ -24,6 +24,15 @@ sudo usermod -aG docker ghost
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
+# Crear el grupo docker si no existe
+sudo groupadd docker
+
+# Agregue su usuario al grupo docker
+sudo usermod -aG docker $USER
+
+# Para evitar tener que cerrar sesión y volver a iniciar sesión, inicie sesión en el nuevo grupo Docker.
+newgrp docker
+
 # Instalación de Snap
 sudo apt-get install snapd
 
@@ -58,3 +67,5 @@ sudo chmod +x ~/Downloads/nosqlbooster.AppImage
 
 # Instalación de Mutagen a través de Brew
 brew install mutagen-io/mutagen/mutagen-beta
+
+# Recomendacion Reiniciar equipo despues de ejecutar este archivo
