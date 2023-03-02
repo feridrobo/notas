@@ -11,13 +11,26 @@ services:
     image: composer:latest
     volumes:
       - ./src:/app
-    command: install
+    command: sh -c "composer install && composer update"
     networks:
       - my-net
   php:
     image: php:fpm
     volumes:
       - ./src:/var/www/html
+      - ./php.ini:/usr/local/etc/php/conf.d/custom.ini
+
+    networks:
+      - my-net
+    command: sh -c "apt-get update && apt-get install -y libssl-dev && pecl install mongodb && docker-php-ext-enable mongodb && php-fpm"
+
+  mongo:
+    image: mongo:latest
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo-data:/data/db
     networks:
       - my-net
 networks:
