@@ -10,7 +10,12 @@ $collection = "test_collection";
 $doc1 = ['_id' => 1, 'name' => 'John Doe', 'age' => 35];
 $doc2 = ['_id' => 2, 'name' => 'Jane Smith', 'age' => 28];
 
-// Insertar los documentos en la colección
+// Eliminar los documentos existentes
+$bulk = new \MongoDB\Driver\BulkWrite();
+$bulk->delete([]);
+$manager->executeBulkWrite("testdb.$collection", $bulk);
+
+// Insertar los nuevos documentos en la colección
 $bulk = new \MongoDB\Driver\BulkWrite();
 $bulk->insert($doc1);
 $bulk->insert($doc2);
@@ -26,5 +31,6 @@ $result = $manager->executeQuery("testdb.$collection", $query);
 foreach ($result as $document) {
     var_dump($document);
 }
+
 
 ?>

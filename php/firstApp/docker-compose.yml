@@ -11,6 +11,7 @@ services:
     image: composer:latest
     volumes:
       - ./src:/app
+      - ./.composer:/tmp
     command: sh -c "composer install && composer update"
     networks:
       - my-net
