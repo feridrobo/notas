@@ -1,0 +1,8 @@
+FROM php:fpm
+
+RUN apt-get update \
+    && apt-get install -y libssl-dev \
+    && pecl install mongodb \
+    && docker-php-ext-enable mongodb \
+    && echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/mongodb.ini
+

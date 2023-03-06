@@ -1,0 +1,14 @@
+{
+    "name": "ghost/poo",
+    "autoload": {
+        "psr-4": {
+            "Ghost\\Poo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "feridrobo"
+        }
+    ],
+    "require": {}
+}
