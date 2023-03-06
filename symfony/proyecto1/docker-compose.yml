@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - php
+    networks:
+      - my-net
+  composer:
+    image: composer:latest
+    volumes:
+      - ./src:/app
+      - ./.composer:/tmp
+    command: sh -c "composer install && composer update"
+    networks:
+      - my-net
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile-php
+    volumes:
+      - ./src:/var/www/html
+      - ./php.ini:/usr/local/etc/php/conf.d/custom.ini
+    networks:
+      - my-net
+
+  mongo:
+    image: mongo:latest
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo-data:/data/db
+    networks:
+      - my-net
+
+networks:
+  my-net:
+
+
