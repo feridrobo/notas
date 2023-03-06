@@ -5,6 +5,7 @@ for container_id in $(docker ps -q); do   echo "Container ID: ${container_id}"; 
 
 docker-compose run --rm composer create-project symfony/website-skeleton nombre-del-proyecto
 
+docker exec 117ccc12f629 composer create-project symfony/skeleton ayuda
 
 
 
